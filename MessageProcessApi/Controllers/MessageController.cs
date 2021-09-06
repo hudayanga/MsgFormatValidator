@@ -25,9 +25,9 @@ namespace MessageProcessApi.Controllers
         }
 
         [HttpPost]
-        public ActionResult Post([FromBody] JsonElement msgFormatA)
+        public ActionResult Post([FromBody] JsonElement msg)
         {
-            string json = System.Text.Json.JsonSerializer.Serialize(msgFormatA);
+            string json = System.Text.Json.JsonSerializer.Serialize(msg);
             var isValid = _messageProcessor.ValidateSchema(json);
             if (!isValid)
             {
