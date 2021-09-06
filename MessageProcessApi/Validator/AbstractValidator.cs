@@ -9,8 +9,8 @@ namespace MessageProcessApi.Validator
         public virtual bool IsValid(string schemaJson,string js)
         {
             JSchema schema = JSchema.Parse(schemaJson);
-            JObject person = JObject.Parse(js);
-            bool valid = person.IsValid(schema);
+            JObject msgFormat = JObject.Parse(js);
+            bool valid = msgFormat.IsValid(schema);
             return valid;
         }
     }
