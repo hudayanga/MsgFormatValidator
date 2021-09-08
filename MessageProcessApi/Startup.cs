@@ -6,6 +6,7 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.EntityFrameworkCore;
 using MessageProcessApi.Models;
 using MessageProcessApi.Service;
+using System;
 
 namespace MessageProcessApi
 {
@@ -21,7 +22,7 @@ namespace MessageProcessApi
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddDbContext<MessageDbContext>(opt => opt.UseSqlite(@"Data Source=/Users/htennakoon/Projects/sqlite/test.sqlite3"),ServiceLifetime.Transient);
+            services.AddDbContext<MessageDbContext>(opt => opt.UseSqlite(Environment.GetEnvironmentVariable("SQLite")),ServiceLifetime.Transient);
             services.AddControllers();
             services.AddSwaggerGen();
 
